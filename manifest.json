@@ -1,0 +1,7 @@
+{
+  "name": "rythm-redesign",
+  "short_name": "rythm-redesign",
+  "description": "A redesign of the Rythm website.",
+  "start_url": "/",
+  "display": "standalone"
+}
