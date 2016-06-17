@@ -15,27 +15,28 @@
       :host {
         display: block;
       }
-      header {
+      section {
         @apply(--layout-vertical);
         @apply(--layout-center-center);
-        height: calc(100vh - 64px);
-        padding: 0 16px;
+        height: 100vh;
+        width: 100vw;
+      }
+      #top {
         background-image: url('top.png');
         backgrond-repeat: no-repeat;
         background-size: cover;
         color: white;
-        text-align: left;
       }
-      section {
-        @apply(--layout-vertical);
-        @apply(--layout-center-center);
-        height: calc(100vh - 64px);
-        padding: 0 16px;
+      #middle {
+        background-color: white;
+      }
+      #bottom {
         background-image: url('bottom.png');
         backgrond-repeat: no-repeat;
         background-size: cover;
       }
       paper-toolbar {
+        width: 100vw;
         background-color: #23272f;
       }
       paper-tabs {
@@ -53,14 +54,13 @@
           <paper-tab>Blog</paper-tab>
         </paper-tabs>
       </paper-toolbar>
-    <!-- </paper-scroll-header-panel>   -->
-      <header>
-        <h2>You've Finally Found a Good Night's Sleep</h2>
-        <p>Introducing the Dreem headband</p>
-      </header> 
-      <section></section>   
-      <div></div>
-    <div></div>
+    <!-- </paper-scroll-header-panel>   --> 
+    <section id="top">
+      <h2>You've Finally Found a Good Night's Sleep</h2>
+      <p>Introducing the Dreem headband</p>
+    </section>   
+    <section id="middle"></section>   
+    <section id="bottom"></section>   
   </template>
 
   <script>
