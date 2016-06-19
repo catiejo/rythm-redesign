@@ -54,23 +54,14 @@
         background-color: #23272f;
         height: 200px;
       }
-      #product-container {
-        display: block;
-        position: relative;
-        width: 75%;
-        height: 100%;
-      }
       #product {
-/*        width: 80%;
-        height: auto;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;*/
         display: block;
         position: relative;
         width: 75%;
-        height: 100%;      }
-      #prod-photo {
+        height: 100%;   
+        padding-left: 30px;   
+      }
+      .product-photo {
         position: absolute;
         width: 80%;
         height: auto;
@@ -80,15 +71,8 @@
         right: 0;
         margin: auto;
       }
-      #pic-box {
-        position: absolute;
-        width: 80%;
+      #picture-frame {
         height: calc(((.60*100vw)/715) * 600);
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
       }
       #screen {
         position: absolute;
@@ -132,13 +116,20 @@
         right: 0px;
       }
       paper-icon-button.giant {
-        width: 54px;
-        height: 95px;
+        top: 45vh;
+        width: 5vw;
+        height: calc(((.05*100vw)/36) * 63);
         position: absolute;
-        top: 155vh;
       }
       #left-arrow {
-        left: 20vw;
+        left: 2vw;
+      }
+      #right-arrow {
+        left: 34vw;
+      }
+      #arrows {
+        position: absolute;
+        z-index: 1;
       }
 
       h2 {
@@ -171,11 +162,13 @@
       <paper-material id="app-text" elevation="0">
         <p>I'm gonna tell you all about this product</p>
       </paper-material>
-        <!-- <paper-icon-button id="left-arrow" src="left-arrow.png" title="left" class="giant"></paper-icon-button> -->
-        <!-- <paper-icon-button id="right-arrow" src="right-arrow.png" title="right" class="giant"></paper-icon-button> -->
         <div id="product">
-          <img src="product.png" id="prod-photo">
-          <div id="pic-box">
+          <div id="arrows">
+            <paper-icon-button id="left-arrow" src="left-arrow.png" title="left" class="giant"></paper-icon-button>
+            <paper-icon-button id="right-arrow" src="right-arrow.png" title="right" class="giant"></paper-icon-button>
+          </div>
+          <img src="product.png" class="product-photo">
+          <div id="picture-frame" class="product-photo">
             <div id="screen"></div>
           </div>
         </div>
