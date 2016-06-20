@@ -21,37 +21,56 @@
 <dom-module id="rythm-redesign-app">
   <template>
     <style>
+    /*** Repeated Elements ***/
       :host {
         display: block;
       }
       div {
         display: block;
       }
+      h2 {
+        font-family: 'Open Sans', sans-serif;
+      }
+      p {
+        font-family: 'Lato', sans-serif;
+      }
       section {
         @apply(--layout-vertical);
         height: 100vh;
         width: 100vw;
+        backgrond-repeat: no-repeat;
+        background-size: cover;
       }
+      paper-material {
+        background-color: rgba(171, 109, 105, 0.5);
+        text-align: left;
+      }
+
+      /*** Landing Section ***/
       #top {
         background-image: url('images/top.png');
-        backgrond-repeat: no-repeat;
-        background-size: cover;
         color: white;
       }
+      paper-toolbar {
+        width: 100vw;
+        background-color: #23272f;
+      }
+      paper-tabs {
+        --paper-tabs-selection-bar-color: #ab6d69;
+      }
+      #pickup-line {
+        padding-left: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        position: absolute;
+        left: 0;
+        bottom: 100px;
+        width: 35%;
+      }
+
+      /*** Product Section ***/
       #middle {
         background-color: white;
-        /*background-image: url('product.png');*/
-        backgrond-repeat: no-repeat;
-        background-size: cover;
-      }
-      #bottom {
-        background-image: url('images/bottom.png');
-        backgrond-repeat: no-repeat;
-        background-size: cover;
-      }
-      #footer {
-        background-color: #23272f;
-        height: 200px;
       }
       #product {
         display: block;
@@ -60,6 +79,15 @@
         height: 100%;   
         padding-left: 30px;   
       }
+      #app-description {
+        text-align: right;
+        padding: 50px;
+        background-color: rgba(255, 255, 255, 0.0);
+        width: 40vw;
+        position: absolute;
+        right: 0px;
+      }
+      /* iPhone */
       .product-photo {
         position: absolute;
         width: 80%;
@@ -80,25 +108,27 @@
         height: 69.2%;
         width: 32.5%;
       }
-      paper-toolbar {
-        width: 100vw;
-        background-color: #23272f;
-      }
-      paper-tabs {
-        --paper-tabs-selection-bar-color: #ab6d69;
-      }
-      paper-material {
-        background-color: rgba(171, 109, 105, 0.5);
-        text-align: left;
-      }
-      #pickup-line {
-        padding-left: 50px;
-        padding-top: 20px;
-        padding-bottom: 20px;
+      /* Arrows */
+      paper-icon-button.giant {
+        top: 45vh;
+        width: 5vw;
+        height: calc(((.05*100vw)/36) * 63);
         position: absolute;
-        left: 0px;
-        bottom: 100px;
-        width: 35%;
+      }
+      #left-arrow {
+        left: 2vw;
+      }
+      #right-arrow {
+        left: 35vw;
+      }
+      #arrows {
+        position: absolute;
+        z-index: 1;
+      }
+
+      /*** Endorsement Section ***/
+      #bottom {
+        background-image: url('images/bottom.png');
       }
       #endorsements {
         width: 100vw;
@@ -106,7 +136,7 @@
         position: relative;
         top: calc(100vh - 15vh);
       }
-      #opacity {
+      #endorsement-backdrop {
         width: 100%;
         height: 100%;
         position: absolute;
@@ -130,55 +160,11 @@
       .endorsement:hover {
         -webkit-filter: grayscale(0%);
       }
-      #app-text {
-        text-align: right;
-        padding: 50px;
-        background-color: rgba(255, 255, 255, 0.0);
-        width: 40vw;
-        position: absolute;
-        right: 0px;
-      }
-      paper-icon-button.giant {
-        top: 45vh;
-        width: 5vw;
-        height: calc(((.05*100vw)/36) * 63);
-        position: absolute;
-      }
-      #left-arrow {
-        left: 2vw;
-      }
-      #right-arrow {
-        left: 35vw;
-      }
-      #arrows {
-        position: absolute;
-        z-index: 1;
-      }
-      #endorsements-container {
-        width: 100%;
-        height: 100%
-        align: center;
-        display: flex;
-        justify-content: space-around;
-        width: 100vw;
-        /*position: absolute;*/
-      }
-      .endorsement-icons {
-        position: absolute;
-        height: 75%;
-        width: auto;
-        padding: 5vw;
-      }
-      #item1 {
-        left: 0;
-        position: absolute;
-      }
 
-      h2 {
-        font-family: 'Open Sans', sans-serif;
-      }
-      p {
-        font-family: 'Lato', sans-serif;
+      /*** The Big Finale ***/
+      #footer {
+        background-color: #23272f;
+        height: 200px;
       }
     </style>
     <!-- <paper-scroll-header-panel class="flex"> -->
@@ -201,7 +187,7 @@
       </paper-material>
     </section>   
     <section id="middle">
-      <paper-material id="app-text" elevation="0">
+      <paper-material id="app-description" elevation="0">
         <p>I'm gonna tell you all about this product</p>
       </paper-material>
         <div id="product">
@@ -217,7 +203,7 @@
     </section>   
     <section id="bottom">
       <div id="endorsements">
-        <paper-material id="opacity" elevation="1"></paper-material>
+        <paper-material id="endorsement-backdrop" elevation="1"></paper-material>
         <div id="endorsement-container">
             <img src="images/endorsements/forbes.png" class="endorsement">
             <img src="images/endorsements/tech-crunch.png" class="endorsement">
