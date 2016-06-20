@@ -11,8 +11,8 @@
 <head>
   <title>Rythm</title>
   <style>
-    body {
-      padding: 0px;
+    html, body {
+      height: 100%;
       margin: 0px;
     }
   </style>
@@ -24,6 +24,10 @@
     /*** Repeated Elements ***/
       :host {
         display: block;
+        height: 100%;
+      }
+      body {
+        height: 100%;
       }
       div {
         display: block;
@@ -51,9 +55,14 @@
         background-image: url('images/top.png');
         color: white;
       }
-      paper-toolbar {
+      paper-scroll-header-panel {
+        height: 15vh;
         width: 100vw;
-        background-color: #23272f;
+        --paper-scroll-header-panel-full-header: #23272f;
+      }
+      paper-toolbar {
+        /*width: 100vw;*/
+        /*background-color: #23272f;*/
       }
       paper-tabs {
         --paper-tabs-selection-bar-color: #ab6d69;
@@ -108,6 +117,13 @@
         height: 69.2%;
         width: 32.5%;
       }
+      #screen-shot {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
       /* Arrows */
       paper-icon-button.giant {
         top: 45vh;
@@ -115,10 +131,10 @@
         height: calc(((.05*100vw)/36) * 63);
         position: absolute;
       }
-      #left-arrow {
+      #left {
         left: 2vw;
       }
-      #right-arrow {
+      #right {
         left: 35vw;
       }
       #arrows {
@@ -167,7 +183,8 @@
         height: 200px;
       }
     </style>
-    <!-- <paper-scroll-header-panel class="flex"> -->
+    <!-- <body class="fullbleed layout vertical"> -->
+    <paper-scroll-header-panel condenses class="flex">
       <paper-toolbar>
         <paper-icon-button src="images/logo.png"></paper-icon-button>
         <span class="title">Rythm</span>
@@ -179,28 +196,32 @@
           <paper-tab>Blog</paper-tab>
         </paper-tabs>
       </paper-toolbar>
-    <!-- </paper-scroll-header-panel>   --> 
+    </paper-scroll-header-panel>   
     <section id="top">
       <paper-material id="pickup-line" elevation="1">
         <h2>You've Finally Found a Good Night's Sleep</h2>
         <p>Introducing the Dreem headband</p>
       </paper-material>
-    </section>   
+    </section>  
+
     <section id="middle">
       <paper-material id="app-description" elevation="0">
         <p>I'm gonna tell you all about this product</p>
       </paper-material>
         <div id="product">
           <div id="arrows">
-            <paper-icon-button id="left-arrow" src="images/left-arrow.png" title="left" class="giant"></paper-icon-button>
-            <paper-icon-button id="right-arrow" src="images/right-arrow.png" title="right" class="giant"></paper-icon-button>
+            <paper-icon-button id="left" src="images/left-arrow.png" title="left" class="giant"></paper-icon-button>
+            <paper-icon-button id="right" src="images/right-arrow.png" title="right" class="giant"></paper-icon-button>
           </div>
           <img src="images/product.png" class="product-photo">
           <div id="picture-frame" class="product-photo">
-            <div id="screen"></div>
+            <div id="screen">
+              <img src="images/screen2.png" id="screen-shot">
+            </div>
           </div>
         </div>
-    </section>   
+    </section>  
+
     <section id="bottom">
       <div id="endorsements">
         <paper-material id="endorsement-backdrop" elevation="1"></paper-material>
@@ -213,13 +234,25 @@
         </div>
       </div>
     </section> 
-    <section id="footer"></section>  
+
+    <section id="footer"></section> 
+  <!-- </body>  -->
   </template>
 
   <script>
     Polymer({
 
       is: 'rythm-redesign-app',
+      listeners: {
+        'left.tap': 'leftTap',
+        'right.tap': 'rightTap'
+      },
+      leftTap: function(e) {
+        document.getElementById("screen-shot").src = "images/screen1.png";
+      },
+      rightTap: function(e) {
+        document.getElementById("screen-shot").src = "images/screen2.png";
+      },
 
     });
   </script>
