@@ -70,6 +70,8 @@
         width: 100vw;
         backgrond-repeat: no-repeat;
         background-size: cover;
+        background-position: center;
+        overflow: scroll;
       }
       paper-material {
         background-color: rgba(171, 109, 105, 0.5);
@@ -127,7 +129,7 @@
         position: relative;
         display: inline-block; /* scales div to size of content */
         line-height: 0; /* gets rid of a couple extra pixels at base of div */
-        left: 10vw;
+        left: 5vw;
         top: 10vh;
       }
       .product-photo {
@@ -209,6 +211,7 @@
         margin-left: auto;
         margin-right: auto;
         -webkit-filter: grayscale(100%);
+        transition: -webkit-filter 0.75s;
       }
       .endorsement:hover {
         -webkit-filter: grayscale(0%);
