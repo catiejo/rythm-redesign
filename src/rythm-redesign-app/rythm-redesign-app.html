@@ -141,19 +141,18 @@
       }
       /* Arrows */
       paper-icon-button.giant {
-        top: 45vh;
+        top: 45%;
         width: 5vw;
-        height: calc(((.05*100vw)/36) * 63);
+        height: auto;
         position: absolute;
       }
       #left {
-        left: 2vw;
+        left: 0;
       }
       #right {
-        left: 35vw;
+        left: 29vw;
       }
       #arrows {
-        position: absolute;
         z-index: 1;
       }
 
@@ -225,13 +224,13 @@
         <p>[[selected]]</p>
       </paper-material>
         <div id="product">
-          <div id="arrows">
-            <paper-icon-button id="left" src="images/left-arrow.png" title="left" class="giant" on-tap="goLeft"></paper-icon-button>
-            <paper-icon-button id="right" src="images/right-arrow.png" title="right" class="giant" on-tap="goRight"></paper-icon-button>
-          </div>
           <div id="phone-container">
             <img src="images/product-test.png" class="product-photo">
             <div id="picture-frame">
+                <div id="arrows">
+                  <paper-icon-button id="left" src="images/left-arrow.png" title="left" class="giant" on-tap="goLeft"></paper-icon-button>
+                  <paper-icon-button id="right" src="images/right-arrow.png" title="right" class="giant" on-tap="goRight"></paper-icon-button>
+                </div>
               <div id="screen">
                 <neon-animated-pages id="pages" test="5" selected$="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
                   <neon-animatable><img src="images/screen1.png" class="screen-shot"></neon-animatable>
