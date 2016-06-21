@@ -1,14 +1,17 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
-<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
-<link rel="import" href="../../bower_components/paper-material/paper-material.html">
-<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
-
-<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
-
 <head>
+  <link rel="import" href="../../bower_components/polymer/polymer.html">
+  <link rel="import" href="../../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+  <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+  <link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+  <link rel="import" href="../../bower_components/paper-material/paper-material.html">
+  <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="../../bower_components/neon-animation/neon-animated-pages.html">
+  <link rel="import" href="../../bower_components/neon-animation/neon-animatable.html">
+  <link rel="import" href="../../bower_components/neon-animation/neon-animations.html">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+
   <title>Rythm</title>
   <style>
     html, body {
@@ -111,13 +114,20 @@
         height: calc(((.60*100vw)/715) * 600);
       }
       #screen {
+        overflow: hidden;
         position: absolute;
         top: 13.5%;
         left: 8.9%;
         height: 69.2%;
         width: 32.5%;
       }
-      #screen-shot {
+      #pages {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;      }
+      .screen-shot {
         width: 100%;
         height: auto;
         position: absolute;
@@ -207,16 +217,21 @@
     <section id="middle">
       <paper-material id="app-description" elevation="0">
         <p>I'm gonna tell you all about this product</p>
+        <p>[[selected]]</p>
       </paper-material>
         <div id="product">
           <div id="arrows">
-            <paper-icon-button id="left" src="images/left-arrow.png" title="left" class="giant"></paper-icon-button>
-            <paper-icon-button id="right" src="images/right-arrow.png" title="right" class="giant"></paper-icon-button>
+            <paper-icon-button id="left" src="images/left-arrow.png" title="left" class="giant" on-tap="goLeft"></paper-icon-button>
+            <paper-icon-button id="right" src="images/right-arrow.png" title="right" class="giant" on-tap="goRight"></paper-icon-button>
           </div>
           <img src="images/product.png" class="product-photo">
           <div id="picture-frame" class="product-photo">
             <div id="screen">
-              <img src="images/screen2.png" id="screen-shot">
+              <neon-animated-pages id="pages" test="5" selected$="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
+                <neon-animatable><img src="images/screen1.png" class="screen-shot"></neon-animatable>
+                <neon-animatable><img src="images/screen2.png" class="screen-shot"></neon-animatable>
+                <neon-animatable><img src="images/screen3.png" class="screen-shot"></neon-animatable>
+              </neon-animated-pages>
             </div>
           </div>
         </div>
@@ -243,15 +258,27 @@
     Polymer({
 
       is: 'rythm-redesign-app',
-      listeners: {
-        'left.tap': 'leftTap',
-        'right.tap': 'rightTap'
+
+      properties: {
+        selected: {
+          type: Number,
+          value: 2,
+          notify: true,
+        },
+        entryAnimation: String,
+        exitAnimation: String,
       },
-      leftTap: function(e) {
-        document.getElementById("screen-shot").src = "images/screen1.png";
+
+      goLeft: function() {
+        this.entryAnimation = 'slide-from-left-animation';
+        this.exitAnimation = 'slide-right-animation';
+        this.selected = this.selected === 0 ? 2 : (this.selected - 1);
       },
-      rightTap: function(e) {
-        document.getElementById("screen-shot").src = "images/screen2.png";
+
+      goRight: function() {
+        this.entryAnimation = 'slide-from-right-animation';
+        this.exitAnimation = 'slide-left-animation';
+        this.selected = this.selected === 2 ? 0 : (this.selected + 1);
       },
 
     });
