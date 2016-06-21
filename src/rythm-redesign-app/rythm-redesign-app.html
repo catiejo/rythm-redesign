@@ -85,7 +85,7 @@
         background-color: white;
       }
       #product {
-        display: block;
+        display: inline-block;
         position: relative;
         width: 75%;
         height: 100%;   
@@ -100,18 +100,21 @@
         right: 0px;
       }
       /* iPhone */
+      #phone-container {
+        position: relative;
+        display: inline-block; /* scales div to size of content */
+        line-height: 0; /* gets rid of a couple extra pixels at base of div */
+      }
       .product-photo {
-        position: absolute;
-        width: 80%;
+        width: 60vw;
         height: auto;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
       }
       #picture-frame {
-        height: calc(((.60*100vw)/715) * 600);
+        position: absolute;
+        height: 100%; /* height and width make it same size as parent (phone-container) */
+        width: 100%;
+        top: 0; /* top and left align it with upper left corner of photo */
+        left: 0;
       }
       #screen {
         overflow: hidden;
@@ -224,14 +227,16 @@
             <paper-icon-button id="left" src="images/left-arrow.png" title="left" class="giant" on-tap="goLeft"></paper-icon-button>
             <paper-icon-button id="right" src="images/right-arrow.png" title="right" class="giant" on-tap="goRight"></paper-icon-button>
           </div>
-          <img src="images/product.png" class="product-photo">
-          <div id="picture-frame" class="product-photo">
-            <div id="screen">
-              <neon-animated-pages id="pages" test="5" selected$="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
-                <neon-animatable><img src="images/screen1.png" class="screen-shot"></neon-animatable>
-                <neon-animatable><img src="images/screen2.png" class="screen-shot"></neon-animatable>
-                <neon-animatable><img src="images/screen3.png" class="screen-shot"></neon-animatable>
-              </neon-animated-pages>
+          <div id="phone-container">
+            <img src="images/product-test.png" class="product-photo">
+            <div id="picture-frame">
+              <div id="screen">
+                <neon-animated-pages id="pages" test="5" selected$="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
+                  <neon-animatable><img src="images/screen1.png" class="screen-shot"></neon-animatable>
+                  <neon-animatable><img src="images/screen2.png" class="screen-shot"></neon-animatable>
+                  <neon-animatable><img src="images/screen3.png" class="screen-shot"></neon-animatable>
+                </neon-animated-pages>
+              </div>
             </div>
           </div>
         </div>
