@@ -10,7 +10,7 @@
   <link rel="import" href="../../bower_components/neon-animation/neon-animatable.html">
   <link rel="import" href="../../bower_components/neon-animation/neon-animations.html">
 
-  <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Oswald" rel="stylesheet">
 
   <title>Rythm</title>
   <style>
@@ -36,11 +36,34 @@
         display: block;
       }
       h2 {
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Oswald', sans-serif;
+        font-size: 40px;
       }
       p {
-        font-family: 'Lato', sans-serif;
+        font-family: 'Open Sans', sans-serif;
+        z-index: 10;
+        font-size: 10px;
       }
+      @media (max-width : 2000px) {
+        p {font-size: 1.5em}
+        /*h2 {font-size: 1.4em}*/
+      } 
+      @media (max-width : 1250px) {
+        p {font-size: 1.3em}
+        /*h2 {font-size: 1.4em}*/
+      } 
+      @media (max-width : 1000px) {
+        p {font-size: 1.2em}
+        /*h2 {font-size: 1.3em}*/
+      } 
+      @media (max-width : 750px) {
+        p {font-size: 1.1em}
+        /*h2 {font-size: 1.1em}*/
+      }       
+      @media (max-width : 600px) {
+        p {font-size: 0.75em}
+        /*h2 {font-size: 1.1em}*/
+      } 
       section {
         @apply(--layout-vertical);
         height: 100vh;
@@ -220,8 +243,9 @@
 
     <section id="middle">
       <paper-material id="app-description" elevation="0">
-        <p>I'm gonna tell you all about this product</p>
-        <p>[[selected]]</p>
+        <p>Understanding your sleep accurately is the first step towards enhancing it. And the most accurate way to understand sleep is by measuring one’s brain activity (EEG). The Dreem headband acquires and analyzes this activity and our Dreem App gives you a meaningful and clear understanding of your sleep when you wake up.</p>
+        <p>Your everyday performance has a lot to do with getting the right quality of sleep so that you wake up recovered, rested, and full of energy. By using sound stimulations at precise moments that sync with your brain activity, we enhance the quality of your sleep during the most critical stage of your sleep - deep sleep.</p>
+        <p>Knowing your precise sleep patterns means you’ll never be interrupted during any of your key sleep stages. Your Dreem headband does this exceptionally well.Just set your alarm time and leave it to the headband to gently wake you up at the ideal time. A time that is in tune with your body so that you wake up refreshed and charged for another day.</p>
       </paper-material>
         <div id="product">
           <div id="phone-container">
