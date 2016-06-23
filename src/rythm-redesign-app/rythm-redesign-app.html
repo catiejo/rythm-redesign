@@ -16,65 +16,32 @@
 <dom-module id="rythm-redesign-app">
   <template>
     <style is="custom-style">
-    /*** Repeated Elements ***/
+    /*** Overall Page ***/
       :host {
         display: block;
         height: 100%;
       }
-    paper-scroll-header-panel {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: var(--paper-grey-200, #eee);
-    }
-    paper-toolbar {
-      background-color: #23272f;
-    }
-    .content {
-      padding: 8px;
-    }
-    .spacer {
-      @apply(--layout-flex);
-    }      div {
-        display: block;
-      }
-      h2 {
+      h1 {
         font-family: 'Oswald', sans-serif;
         font-size: 40px;
       }
       p {
         font-family: 'Open Sans', sans-serif;
-        z-index: 10;
-        /*font-size: 2px;*/
       }
-      @media (max-width : 2000px) {
-        p {font-size: 1.5em}
-      } 
-      @media (max-width : 1600px) {
-        p {font-size: 1.3em}
-      } 
-      @media (max-width : 1400px) {
-        p {font-size: 1.1em}
-      } 
-      @media (max-width : 1000px) {
-        p {font-size: 1em}
-      } 
-      @media (max-width : 800px) {
-        p {font-size: 0.9em}
-      }       
-      @media (max-width : 600px) {
-        p {font-size: 0.75em}
-      } 
       section {
         @apply(--layout-vertical);
-        height: 100vh;
         width: 100vw;
+        height: 100vh;
         backgrond-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        overflow: scroll;
+      }
+      paper-scroll-header-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
       }
       paper-material {
         background-color: rgba(171, 109, 105, 0.5);
@@ -86,31 +53,26 @@
         background-image: url('images/top.png');
         color: white;
       }
-      /*paper-scroll-header-panel {*/
-        /*height: 15vh;*/
-        /*width: 100vw;*/
-        /*--paper-scroll-header-panel-full-header: #23272f;*/
-      /*}*/
       paper-toolbar {
-        /*width: 100vw;*/
         background-color: #23272f;
       }
       paper-tabs {
         --paper-tabs-selection-bar-color: #ab6d69;
       }
       #pickup-line {
-        padding-left: 50px;
-        padding-top: 20px;
-        padding-bottom: 20px;
         position: absolute;
+        width: 35%;
         left: 0;
         bottom: 100px;
-        width: 35%;
+        padding-top: 20px;
+        padding-left: 50px;
+        padding-bottom: 20px;
       }
 
       /*** Product Section ***/
       #middle {
         background-color: white;
+        overflow: scroll;
       }
       #product {
         display: inline-block;
@@ -119,27 +81,44 @@
         height: 100%;   
         padding-left: 30px;   
       }
-      #app-description {
-        color: #666666;
-        text-align: right;
-        padding-right: 30px;
-        padding-top: 30px;
-        padding-bottom: 30px;
+      #app-description { /* text size is scaled below to prevent overflow to other sections */
+        position: absolute;
         width: 30vw;
         height: auto;
-        position: absolute;
         right: 0px;
-        z-index: 1;
-        /*overflow: scroll;*/
-        background: none;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-bottom: 30px;
+        color: #666666;
+        text-align: right;
+        background: none; /* overrides paper-material */
       }
+      @media (max-width : 2000px) {
+        #app-description {font-size: 1.5em}
+      } 
+      @media (max-width : 1600px) {
+        #app-description {font-size: 1.3em}
+      } 
+      @media (max-width : 1400px) {
+        #app-description {font-size: 1.1em}
+      } 
+      @media (max-width : 1000px) {
+        #app-description {font-size: 1em}
+      } 
+      @media (max-width : 800px) {
+        #app-description {font-size: 0.9em}
+      }       
+      @media (max-width : 600px) {
+        #app-description {font-size: 0.75em}
+      }
+
       /* iPhone */
       #phone-container {
-        position: relative;
         display: inline-block; /* scales div to size of content */
-        line-height: 0; /* gets rid of a couple extra pixels at base of div */
-        left: 5vw;
+        position: relative;
         top: 10vh;
+        left: 5vw;
+        line-height: 0; /* gets rid of a couple extra pixels at base of div */
       }
       .product-photo {
         width: 60vw;
@@ -147,38 +126,33 @@
       }
       #picture-frame {
         position: absolute;
-        height: 100%; /* height and width make it same size as parent (phone-container) */
-        width: 100%;
+        width: 100%; /* height and width make it same size as parent (phone-container) */
+        height: 100%;
         top: 0; /* top and left align it with upper left corner of photo */
         left: 0;
       }
       #screen {
-        overflow: hidden;
         position: absolute;
-        top: 15.1%;
-        left: 11.5%;
-        height: 69.5%;
         width: 32.2%;
+        height: 69.5%;
+        top: 15.1%; /* hardcoded values to line screen div up perfectly with screen in photo */
+        left: 11.5%;
+        overflow: hidden; /* makes screens look like they stay on the phone */
       }
-      #pages {
-        width: 100%;
-        height: auto;
-        position: absolute;
-        top: 0;
-        left: 0;      }
       .screen-shot {
+        position: absolute;
         width: 100%;
         height: auto;
-        position: absolute;
         top: 0;
         left: 0;
       }
+
       /* Arrows */
-      paper-icon-button.giant {
-        top: 45%;
+      paper-icon-button.giant { /* larger buttons so arrows are more prominent */
+        position: absolute;
         width: 5vw;
         height: auto;
-        position: absolute;
+        top: 45%;
       }
       #left {
         left: 0;
@@ -187,7 +161,7 @@
         left: 29vw;
       }
       #arrows {
-        z-index: 1;
+        z-index: 1; /* make sure arrows are higher than image (so they're pressable) */
       }
 
       /*** Endorsement Section ***/
@@ -195,27 +169,27 @@
         background-image: url('images/bottom.png');
       }
       #endorsements {
+        position: relative;
         width: 100vw;
         height: 15vh;
-        position: relative;
-        top: calc(100vh - 15vh);
+        top: 85vh; /* 85 + 15 = 100 --> lines up with bottom */ 
       }
       #endorsement-backdrop {
+        position: absolute;
         width: 100%;
         height: 100%;
-        position: absolute;
       }
       #endorsement-container {
+        position: absolute;
         width: 100%;
         height: 100%;
-        position: absolute;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-between; /* spaces icons evenly */
         align-items: center;
       }
       .endorsement {
-        height: 75%;
         width: auto;
+        height: 75%;
         padding: 25px;
         margin-left: auto;
         margin-right: auto;
@@ -232,9 +206,9 @@
         height: 200px;
       }
     </style>
-  <paper-scroll-header-panel condenses>
-
-    <paper-toolbar class="tall">
+    <paper-scroll-header-panel condenses>
+      <!-- Top Menu Bar -->
+      <paper-toolbar class="tall">
         <paper-icon-button src="images/logo.png"></paper-icon-button>
         <span class="title">Rythm</span>
         <paper-tabs selected="0" noink>
@@ -247,55 +221,63 @@
       </paper-toolbar>
 
       <div class="content">
-    <section id="top">
-      <paper-material id="pickup-line" elevation="1">
-        <h2>You've Finally Found a Good Night's Sleep</h2>
-        <p>Introducing the Dreem headband</p>
-      </paper-material>
-    </section>  
+        <!-- Landing Section -->
+        <section id="top">
+          <paper-material id="pickup-line" elevation="1">
+            <h1>You've Finally Found a Good Night's Sleep</h1>
+            <p>Introducing the Dreem headband</p>
+          </paper-material>
+        </section>  
 
-    <section id="middle">
-      <paper-material id="app-description" elevation="0">
-        <p>Understanding your sleep accurately is the first step towards enhancing it. And the most accurate way to understand sleep is by measuring one’s brain activity (EEG). The Dreem headband acquires and analyzes this activity and our Dreem App gives you a meaningful and clear understanding of your sleep when you wake up.</p>
-        <p>Your everyday performance has a lot to do with getting the right quality of sleep so that you wake up recovered, rested, and full of energy. By using sound stimulations at precise moments that sync with your brain activity, we enhance the quality of your sleep during the most critical stage of your sleep - deep sleep.</p>
-        <p>Knowing your precise sleep patterns means you’ll never be interrupted during any of your key sleep stages. Your Dreem headband does this exceptionally well.Just set your alarm time and leave it to the headband to gently wake you up at the ideal time. A time that is in tune with your body so that you wake up refreshed and charged for another day.</p>
-      </paper-material>
-        <div id="product">
-          <div id="phone-container">
-            <img src="images/product-test.png" class="product-photo">
-            <div id="picture-frame">
+        <section id="middle">
+          <!-- Product Description -->
+          <paper-material id="app-description" elevation="0">
+            <p>Understanding your sleep accurately is the first step towards enhancing it. And the most accurate way to understand sleep is by measuring one’s brain activity (EEG). The Dreem headband acquires and analyzes this activity and our Dreem App gives you a meaningful and clear understanding of your sleep when you wake up.</p>
+            <p>Your everyday performance has a lot to do with getting the right quality of sleep so that you wake up recovered, rested, and full of energy. By using sound stimulations at precise moments that sync with your brain activity, we enhance the quality of your sleep during the most critical stage of your sleep - deep sleep.</p>
+            <p>Knowing your precise sleep patterns means you’ll never be interrupted during any of your key sleep stages. Your Dreem headband does this exceptionally well.Just set your alarm time and leave it to the headband to gently wake you up at the ideal time. A time that is in tune with your body so that you wake up refreshed and charged for another day.</p>
+          </paper-material>
+          <!-- App Demo -->
+          <div id="product">
+            <div id="phone-container">
+              <img src="images/product-test.png" class="product-photo">
+              <!-- Div scaled to exact size of image (to allow for phone #screen positioning) -->
+              <div id="picture-frame">
+                <!-- These arrows overflow the parent, but this allows the arrows to be centered on the phone screen -->
                 <div id="arrows">
                   <paper-icon-button id="left" src="images/left-arrow.png" title="left" class="giant" on-tap="goLeft"></paper-icon-button>
                   <paper-icon-button id="right" src="images/right-arrow.png" title="right" class="giant" on-tap="goRight"></paper-icon-button>
                 </div>
-              <div id="screen">
-                <neon-animated-pages id="pages" test="5" selected$="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
-                  <neon-animatable><img src="images/screen1.png" class="screen-shot"></neon-animatable>
-                  <neon-animatable><img src="images/screen2.png" class="screen-shot"></neon-animatable>
-                  <neon-animatable><img src="images/screen3.png" class="screen-shot"></neon-animatable>
-                </neon-animated-pages>
+                <div id="screen">
+                  <!-- This does the heavy lifting for animating the phone screens -->
+                  <neon-animated-pages class="screen-shot" selected$="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
+                    <neon-animatable><img src="images/screen1.png" class="screen-shot"></neon-animatable>
+                    <neon-animatable><img src="images/screen2.png" class="screen-shot"></neon-animatable>
+                    <neon-animatable><img src="images/screen3.png" class="screen-shot"></neon-animatable>
+                  </neon-animated-pages>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-    </section>  
+        </section>  
 
-    <section id="bottom">
-      <div id="endorsements">
-        <paper-material id="endorsement-backdrop" elevation="1"></paper-material>
-        <div id="endorsement-container">
-            <img src="images/endorsements/forbes.png" class="endorsement">
-            <img src="images/endorsements/tech-crunch.png" class="endorsement">
-            <img src="images/endorsements/about.png" class="endorsement">
-            <img src="images/endorsements/wareable.png" class="endorsement">
-            <img src="images/endorsements/cnet.png" class="endorsement">
-        </div>
-      </div>
-    </section> 
+        <section id="bottom">
+          <div id="endorsements">
+            <paper-material id="endorsement-backdrop" elevation="1"></paper-material>
+            <!-- Press Icons -->
+            <div id="endorsement-container">
+              <img src="images/endorsements/forbes.png" class="endorsement">
+              <img src="images/endorsements/tech-crunch.png" class="endorsement">
+              <img src="images/endorsements/about.png" class="endorsement">
+              <img src="images/endorsements/wareable.png" class="endorsement">
+              <img src="images/endorsements/cnet.png" class="endorsement">
+            </div>
+          </div>
+        </section> 
 
-    <section id="footer"></section>
-    </div>
-  </paper-scroll-header-panel> 
+        <section id="footer"></section>
+
+      </div> <!-- Content end tag -->
+    </paper-scroll-header-panel> 
   </template>
 
   <script>
@@ -313,12 +295,13 @@
         exitAnimation: String,
       },
 
+      // Phone screen animations. 
+      // Direction of "swipe" depends on arrow pressed
       goLeft: function() {
         this.entryAnimation = 'slide-from-left-animation';
         this.exitAnimation = 'slide-right-animation';
         this.selected = this.selected === 0 ? 2 : (this.selected - 1);
       },
-
       goRight: function() {
         this.entryAnimation = 'slide-from-right-animation';
         this.exitAnimation = 'slide-left-animation';
