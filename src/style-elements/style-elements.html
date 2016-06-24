@@ -195,11 +195,13 @@
         margin-left: auto;
         margin-right: auto;
         padding: 25px;
-        transition: -webkit-filter 0.75s;
+        transition: -webkit-filter 0.75s, filter 0.75s;
+        transition-timing-function: ease-in-out;
         width: auto;
       }
       .endorsement:hover {
-        -webkit-filter: grayscale(0%);
+        -webkit-filter: grayscale(0%); /* using same compatibility as actual website */
+        filter: grayscale(0%);
       }
 
       /*** Footer ***/
