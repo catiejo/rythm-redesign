@@ -23,11 +23,20 @@
         width: 100vw;
       }
       paper-scroll-header-panel {
+      	background-color: rgba(35, 39, 47, 1.0);
         bottom: 0;
         left: 0;
         position: absolute;
         right: 0;
         top: 0;
+        /* background for toolbar when it is at its full size */
+		--paper-scroll-header-panel-full-header: {
+			background-color: rgba(35, 39, 47, 1.0);
+		};
+        /* background for toolbar when it is at its condensed size */
+		--paper-scroll-header-panel-condensed-header: {
+			background-color: rgba(35, 39, 47, 0.75);
+		};
       }
       paper-material {
         background-color: rgba(171, 109, 105, 0.5);
@@ -39,8 +48,13 @@
         background-image: url('../assets/top.png');
         color: white;
       }
+      paper-icon-button.long {
+      	height: auto;
+      	top: 20px;
+      	width: auto;
+      }
       paper-toolbar {
-        background-color: #23272f;
+        background-color: transparent;
       }
       paper-tabs {
         --paper-tabs-selection-bar-color: #ab6d69;
