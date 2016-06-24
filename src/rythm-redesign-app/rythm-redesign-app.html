@@ -12,210 +12,17 @@
 <link rel="import" href="../../bower_components/paper-styles/color.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link href="https://fonts.googleapis.com/css?family=Lato|Oswald" rel="stylesheet">
+<link rel="import" href="../style-elements/style-elements.html">
+
 
 <dom-module id="rythm-redesign-app">
   <template>
-    <style is="custom-style">
-      /*** Overall Page ***/
-      :host {
-        display: block;
-        height: 100%;
-      }
-      h1 {
-        font-family: 'Oswald', sans-serif;
-        font-size: 40px;
-      }
-      h2 {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 26px;
-      }
-      p {
-        font-family: 'Open Sans', sans-serif;
-      }
-      section {
-        @apply(--layout-vertical);
-        backgrond-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        height: 100vh;
-        width: 100vw;
-      }
-      paper-scroll-header-panel {
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-      paper-material {
-        background-color: rgba(171, 109, 105, 0.5);
-        text-align: left;
-      }
-
-      /*** Landing Section ***/
-      #landing-section {
-        background-image: url('images/top.png');
-        color: white;
-      }
-      paper-toolbar {
-        background-color: #23272f;
-      }
-      paper-tabs {
-        --paper-tabs-selection-bar-color: #ab6d69;
-      }
-      #pickup-line {
-        bottom: 100px;
-        left: 0;
-        padding-bottom: 20px;
-        padding-left: 50px;
-        padding-top: 20px;
-        position: absolute;
-        width: 35%;
-      }
-
-      /*** Product Section ***/
-      #product-section {
-        background-color: white;
-        overflow: scroll;
-      }
-      #product {
-        display: inline-block;
-        height: 100%;   
-        padding-left: 30px;   
-        position: relative;
-        width: 75%;
-      }
-      #app-description {
-        background: none; /* overrides paper-material */
-        color: #666666;
-        height: auto;
-        padding-bottom: 30px;
-        padding-right: 30px;
-        padding-top: 30px;
-        position: absolute;
-        right: 0px;
-        text-align: right;
-        width: 30vw;
-      }
-      /* adjust screen size based on size of screen */
-      @media (max-width : 2000px) {
-        #app-description {font-size: 1.5em}
-      } 
-      @media (max-width : 1600px) {
-        #app-description {font-size: 1.3em}
-      } 
-      @media (max-width : 1400px) {
-        #app-description {font-size: 1.1em}
-      } 
-      @media (max-width : 1000px) {
-        #app-description {font-size: 1em}
-      } 
-      @media (max-width : 800px) {
-        #app-description {font-size: 0.9em}
-      }       
-      @media (max-width : 600px) {
-        #app-description {font-size: 0.75em}
-      }
-
-      /* iPhone */
-      #phone-container {
-        display: inline-block; /* scales div to size of content */
-        left: 5vw;
-        line-height: 0; /* gets rid of a couple extra pixels at base of div */
-        position: relative;
-        top: 10vh;
-      }
-      .product-photo {
-        height: auto;
-        width: 60vw;
-      }
-      #product-photo-frame {
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0; /* top and left align it with upper left corner of photo */
-        width: 100%; /* height and width make it same size as parent (phone-container) */
-      }
-      #phone-screen {
-        height: 69.5%;
-        left: 11.5%;
-        overflow: hidden; /* ensures phone content is cropped to the phone screen */
-        position: absolute;
-        top: 15.1%; /* hardcoded values to line screen div up perfectly with screen in photo */
-        width: 32.2%;
-      }
-      .phone-screen-content {
-        height: auto;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-      }
-
-      /* Arrows */
-      paper-icon-button.giant {
-        height: auto;
-        position: absolute;
-        top: 45%;
-        width: 5vw;
-      }
-      #arrows {
-        z-index: 1; /* make sure arrows are higher than image (so they're pressable) */
-      }      
-      #arrow-left {
-        left: 0;
-      }
-      #arrow-right {
-        left: 29vw;
-      }
-
-      /*** Endorsement Section ***/
-      #endorsement-section {
-        background-image: url('images/bottom.png');
-        position: relative;
-      }
-      #endorsements {
-        bottom: 0;
-        height: 15vh;
-        position: absolute;
-        width: 100vw;
-      }
-      #endorsement-backdrop {
-        height: 100%;
-        position: absolute;
-        width: 100%;
-      }
-      #endorsement-container {
-        align-items: center;
-        display: flex;
-        height: 100%;
-        justify-content: space-between; /* spaces icons evenly */
-        position: absolute;
-        width: 100%;
-      }
-      .endorsement {
-        -webkit-filter: grayscale(100%);
-        height: 75%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 25px;
-        transition: -webkit-filter 0.75s;
-        width: auto;
-      }
-      .endorsement:hover {
-        -webkit-filter: grayscale(0%);
-      }
-
-      /*** Footer ***/
-      #footer {
-        background-color: #23272f;
-        height: 200px;
-      }
-    </style>
+    <style include="style-elements"></style>
+    <style>:host { display: block; height: 100%;}</style>
     <paper-scroll-header-panel condenses>
       <!-- Top Menu Bar -->
       <paper-toolbar class="tall">
-        <paper-icon-button src="images/logo.png"></paper-icon-button>
+        <paper-icon-button src="../assets/logo.png"></paper-icon-button>
         <span class="title">Rythm</span>
         <paper-tabs selected="0" noink>
           <paper-tab>Home</paper-tab>
@@ -245,20 +52,20 @@
           <!-- App demo -->
           <div id="product">
             <div id="phone-container">
-              <img src="images/product-test.png" class="product-photo">
+              <img src="../assets/product-test.png" class="product-photo">
               <!-- Div scaled to exact size of image (to allow for phone #screen positioning) -->
               <div id="product-photo-frame">
                 <!-- These arrows overflow the parent, but this allows the arrows to be centered on the phone screen -->
                 <div id="arrows">
-                  <paper-icon-button id="arrow-left" src="images/left-arrow.png" title="left" class="giant" on-tap="goLeft"></paper-icon-button>
-                  <paper-icon-button id="arrow-right" src="images/right-arrow.png" title="right" class="giant" on-tap="goRight"></paper-icon-button>
+                  <paper-icon-button id="arrow-left" src="../assets/left-arrow.png" title="left" class="giant" on-tap="goLeft"></paper-icon-button>
+                  <paper-icon-button id="arrow-right" src="../assets/right-arrow.png" title="right" class="giant" on-tap="goRight"></paper-icon-button>
                 </div>
                 <div id="phone-screen">
                   <!-- This does the heavy lifting for animating the phone screens -->
                   <neon-animated-pages class="phone-screen-content" selected="[[screenSelected]]" entry-animation="[[screenEntryAnimation]]" exit-animation="[[screenExitAnimation]]">
-                    <neon-animatable><img src="images/screen1.png" class="phone-screen-content"></neon-animatable>
-                    <neon-animatable><img src="images/screen2.png" class="phone-screen-content"></neon-animatable>
-                    <neon-animatable><img src="images/screen3.png" class="phone-screen-content"></neon-animatable>
+                    <neon-animatable><img src="../assets/screen1.png" class="phone-screen-content"></neon-animatable>
+                    <neon-animatable><img src="../assets/screen2.png" class="phone-screen-content"></neon-animatable>
+                    <neon-animatable><img src="../assets/screen3.png" class="phone-screen-content"></neon-animatable>
                   </neon-animated-pages>
                 </div>
               </div>
@@ -271,11 +78,11 @@
             <paper-material id="endorsement-backdrop" elevation="1"></paper-material>
             <!-- Press icons -->
             <div id="endorsement-container">
-              <img src="images/endorsements/forbes.png" class="endorsement">
-              <img src="images/endorsements/tech-crunch.png" class="endorsement">
-              <img src="images/endorsements/about.png" class="endorsement">
-              <img src="images/endorsements/wareable.png" class="endorsement">
-              <img src="images/endorsements/cnet.png" class="endorsement">
+              <img src="../assets/endorsements/forbes.png" class="endorsement">
+              <img src="../assets/endorsements/tech-crunch.png" class="endorsement">
+              <img src="../assets/endorsements/about.png" class="endorsement">
+              <img src="../assets/endorsements/wareable.png" class="endorsement">
+              <img src="../assets/endorsements/cnet.png" class="endorsement">
             </div>
           </div>
         </section> 
