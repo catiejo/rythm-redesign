@@ -20,11 +20,28 @@
 
     <script>
       suite('rythm-redesign-app', function() {
-
+        // var app;
+        // setup(function() {
+        //   app = fixture('rythm-redesign-app');
+        // });
         test('instantiating the element works', function() {
           let element = fixture('basic');
           assert.equal(element.is, 'rythm-redesign-app');
         });
+
+        // test('goLeft works', function () {
+        //   app.screenSelected = 2;
+        //   assert.equal(app.goLeft(), 1); //should increment by one
+        //   app.goLeft();
+        //   assert.equal(app.goLeft(), 2); //should roll over back to zero
+        // });
+
+        // test('goRight works', function () {
+        //   app.screenSelected = 0;
+        //   assert.equal(app.goRight(), 1); //should increment by one
+        //   app.goLeft();
+        //   assert.equal(app.goRight(), 0); //should roll over back to zero
+        // });
 
       });
     </script>
