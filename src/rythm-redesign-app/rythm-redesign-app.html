@@ -129,14 +129,14 @@
         height: auto;
         width: 60vw;
       }
-      #picture-frame {
+      #product-photo-frame {
         height: 100%;
         left: 0;
         position: absolute;
         top: 0; /* top and left align it with upper left corner of photo */
         width: 100%; /* height and width make it same size as parent (phone-container) */
       }
-      #screen {
+      #phone-screen {
         height: 69.5%;
         left: 11.5%;
         overflow: hidden; /* ensures phone content is cropped to the phone screen */
@@ -144,7 +144,7 @@
         top: 15.1%; /* hardcoded values to line screen div up perfectly with screen in photo */
         width: 32.2%;
       }
-      .screen-shot {
+      .phone-screen-content {
         height: auto;
         left: 0;
         position: absolute;
@@ -159,14 +159,14 @@
         top: 45%;
         width: 5vw;
       }
-      #left {
-        left: 0;
-      }
-      #right {
-        left: 29vw;
-      }
       #arrows {
         z-index: 1; /* make sure arrows are higher than image (so they're pressable) */
+      }      
+      #arrow-left {
+        left: 0;
+      }
+      #arrow-right {
+        left: 29vw;
       }
 
       /*** Endorsement Section ***/
@@ -247,18 +247,18 @@
             <div id="phone-container">
               <img src="images/product-test.png" class="product-photo">
               <!-- Div scaled to exact size of image (to allow for phone #screen positioning) -->
-              <div id="picture-frame">
+              <div id="product-photo-frame">
                 <!-- These arrows overflow the parent, but this allows the arrows to be centered on the phone screen -->
                 <div id="arrows">
-                  <paper-icon-button id="left" src="images/left-arrow.png" title="left" class="giant" on-tap="goLeft"></paper-icon-button>
-                  <paper-icon-button id="right" src="images/right-arrow.png" title="right" class="giant" on-tap="goRight"></paper-icon-button>
+                  <paper-icon-button id="arrow-left" src="images/left-arrow.png" title="left" class="giant" on-tap="goLeft"></paper-icon-button>
+                  <paper-icon-button id="arrow-right" src="images/right-arrow.png" title="right" class="giant" on-tap="goRight"></paper-icon-button>
                 </div>
-                <div id="screen">
+                <div id="phone-screen">
                   <!-- This does the heavy lifting for animating the phone screens -->
-                  <neon-animated-pages class="screen-shot" selected="[[screenSelected]]" entry-animation="[[screenEntryAnimation]]" exit-animation="[[screenExitAnimation]]">
-                    <neon-animatable><img src="images/screen1.png" class="screen-shot"></neon-animatable>
-                    <neon-animatable><img src="images/screen2.png" class="screen-shot"></neon-animatable>
-                    <neon-animatable><img src="images/screen3.png" class="screen-shot"></neon-animatable>
+                  <neon-animated-pages class="phone-screen-content" selected="[[screenSelected]]" entry-animation="[[screenEntryAnimation]]" exit-animation="[[screenExitAnimation]]">
+                    <neon-animatable><img src="images/screen1.png" class="phone-screen-content"></neon-animatable>
+                    <neon-animatable><img src="images/screen2.png" class="phone-screen-content"></neon-animatable>
+                    <neon-animatable><img src="images/screen3.png" class="phone-screen-content"></neon-animatable>
                   </neon-animated-pages>
                 </div>
               </div>
