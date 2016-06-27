@@ -2,7 +2,7 @@
 
 A side project recreating elements of Rythm's website (www.rythm.co) using Polymer prototyping.
 
-The final product can be viewed at: rythm-1355.appspot.com
+The final product can be viewed at: [rythm-1355.appspot.com](rythm-1355.appspot.com)
 
 *HOWEVER* I encourage you to check the "demo" video located in the `screenshots` directory. Due to [an issue I filed](https://github.com/Polymer/polymer-cli/issues/292) with one of the elements I'm using in this prototype, I wasn't able to deploy the app with the same functionality included in this repository--most of the animatins are missing from the deployed version. If you'd like to build the app locally, however, it is fully functional. Simply follow the instructions below (starting with "Installing the Polymer CLI").
 
