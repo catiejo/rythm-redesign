@@ -4,7 +4,7 @@ A side project recreating elements of Rythm's website (www.rythm.co) using Polym
 
 The final product can be viewed at: rythm-1355.appspot.com
 
-*HOWEVER* I encourage you to check the "demo" video located in the `screenshots` directory. Due to [an issue](https://github.com/Polymer/polymer-cli/issues/292) with one of the elements I'm using in this prototype, I wasn't able to deploy the app with the same functionality included in this repository. If you'd like to build the app locally, however, it is fully functional. Simply follow the instructions below (starting with "Installing the Polymer CLI").
+*HOWEVER* I encourage you to check the "demo" video located in the `screenshots` directory. Due to [an issue I filed](https://github.com/Polymer/polymer-cli/issues/292) with one of the elements I'm using in this prototype, I wasn't able to deploy the app with the same functionality included in this repository--most of the animatins are missing from the deployed version. If you'd like to build the app locally, however, it is fully functional. Simply follow the instructions below (starting with "Installing the Polymer CLI").
 
 ## My Process
 I decided to do a one-week sprint to see how much I could learn about Rythm's website. This included looking at the existing website, mocking up a wireframe in Adobe Illustrator, and using Polymer to build the site as close to my original specs as I could.
@@ -44,7 +44,7 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 ## Viewing Your Application
 
 ```
-$ polymer serve
+$ polymer serve --open
 ```
 
 ## Building Your Application
