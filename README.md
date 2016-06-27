@@ -2,9 +2,9 @@
 
 A side project recreating elements of Rythm's website (www.rythm.co) using Polymer prototyping.
 
-The final product can be viewed at:
+The final product can be viewed at: rythm-1355.appspot.com
 
-(You can also look at my wireframe and screenshots of the finished prototype in the "screenshots" folder above.)
+*HOWEVER* I encourage you to check the "demo" video located in the `screenshots` directory. Due to [an issue](https://github.com/Polymer/polymer-cli/issues/292) with one of the elements I'm using in this prototype, I wasn't able to deploy the app with the same functionality included in this repository. If you'd like to build the app locally, however, it is fully functional. Simply follow the instructions below (starting with "Installing the Polymer CLI").
 
 ## My Process
 I decided to do a one-week sprint to see how much I could learn about Rythm's website. This included looking at the existing website, mocking up a wireframe in Adobe Illustrator, and using Polymer to build the site as close to my original specs as I could.
@@ -33,7 +33,7 @@ Despite this change, I also wanted to preserve a lot of Rythm's original look an
 ### Conclusions + Future Work
 I learned a ton from this project, and there's still a lot I want to experiment with. Most notably, I didn't have enough time to make appearing/disappearing quotes. I have color-changing logos for each of the quote sources, but the endorsement quotes aren't currently displaying when you hover over their associated icons/ I know how to do this in javascript, but I want to challenge myself to see if I can make it work in CSS. I have started developing that in a separate branch, and will merge my changes back in when I get it working.
 
-I would also like to do some more robust testing--I did a some small testing for the methods in my polymer element, but a full application would of course have a lot more exhaustive testing suite.
+I would also like to do some more robust testing--I did manual testing for the methods in my polymer element, as well as page renderings at different sizes, but a full application would of course have a lot more exhaustive testing suite.
 
 # If you'd like to build this project yourself...
 
